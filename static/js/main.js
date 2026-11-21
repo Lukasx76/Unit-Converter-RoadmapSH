@@ -1,21 +1,23 @@
+const list = document.getElementById('conversion-options');
+const heading = document.getElementById('targetTag');
 
-function changeTagName(id, target) {
+list.addEventListener('click', (event) => {
+  const option = event.target.closest('a');
 
-    const link = document.getElementById(id);
-    link.addEventListener("click", function (event) {
-        
-        const tagToChange = document.getElementById(target)
-        if (tagToChange.textContent === "Length") {
-            tagToChange.textContent = "Enter the Length to convert"
-        }
+  if (!option) {
+    return;
+  }
 
-        else if (tagToChange.textContent === "Weight") {
-            tagToChange.textContent = "Enter the Weight to convert"
-        }
+  event.preventDefault();
 
-        else if (tagToChange.textContent === "Temperature") {
-            tagToChange.textContent = "Enter the Temperature to convert"
-        }
-    
-    })
-}
+  if (option.textContent.trim() === "Length") {
+    heading.innerText = "Enter the Length to convert"
+  }
+  if (option.textContent.trim() === "Weight") {
+    heading.innerText = "Enter the Weight to convert"
+  }
+  if (option.textContent.trim() === "Temperature") {
+    heading.innerText = "Enter the Temperature to convert"
+  }
+
+});
